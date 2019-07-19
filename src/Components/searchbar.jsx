@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "../input.css";
+//import { lookup, history } from "yahoo-stocks";
+import { lookup, history } from "yahoo-stocks";
 class Searchbar extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +33,10 @@ class Searchbar extends Component {
     );
   }
   handleClick = () => {
-    console.log("searching for ", this.state.text);
+    console.log(this.state.text);
+    lookup(this.state.text).then(response => {
+      console.log(response);
+    });
   };
   handleChange = e => {
     let value = e.target.value;

@@ -3,12 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.5.5",
+    "babel-loader": "^8.0.6",
     "bootstrap": "^4.3.1",
+    "https": "^1.0.0",
     "jquery": "^3.4.1",
+    "node-gyp": "^5.0.3",
     "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
+    "rebuild": "^0.1.2",
+    "stocks": "^1.0.1",
+    "yahoo": "0.0.2",
+    "yahoo-stocks": "^2.0.4",
     "yarn": "^1.17.3"
   },
   "scripts": {
@@ -31,5 +39,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ananth102/Portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ananth102/Portfolio/issues"
+  },
+  "homepage": "https://github.com/ananth102/Portfolio#readme"
 }
