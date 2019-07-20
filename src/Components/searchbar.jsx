@@ -32,16 +32,6 @@ class Searchbar extends Component {
       </React.Fragment>
     );
   }
-  handleClick = () => {
-    console.log(this.state.text);
-    lookup(this.state.text).then(response => {
-      console.log(response);
-    });
-  };
-  handleChange = e => {
-    let value = e.target.value;
-    this.setState({ text: value });
-  };
 }
 
 export default Searchbar;
