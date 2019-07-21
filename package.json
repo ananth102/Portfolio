@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.5.5",
-    "babel-loader": "^8.0.6",
     "bootstrap": "^4.3.1",
+    "clearbit-logo": "0.0.1",
+    "cors": "^2.8.5",
+    "google-stocks": "^2.0.1",
     "https": "^1.0.0",
     "jquery": "^3.4.1",
     "node-gyp": "^5.0.3",
@@ -41,9 +43,7 @@
     ]
   },
   "devDependencies": {
-    "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-cli": "^3.3.6"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",

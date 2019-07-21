@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import "../input.css";
-//import { lookup, history } from "yahoo-stocks";
+//import "google-stocks";
+//import googleStocks from "google-stocks/dist/google-stocks";
 import { lookup, history } from "yahoo-stocks";
+
 class Searchbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ""
+      //text: ""
     };
   }
 
@@ -16,7 +18,7 @@ class Searchbar extends Component {
       <React.Fragment>
         <input
           type="text"
-          onChange={this.handleChange}
+          onChange={this.props.onChange}
           name="name"
           class="question"
           id="nme"
@@ -26,12 +28,27 @@ class Searchbar extends Component {
         <label for="nme">
           <span>Enter Stock or Crypto currency</span>
         </label>
-        <button onClick={this.handleClick} class="btn btn-outline-secondary">
+        <button onClick={this.props.onClick} class="btn btn-outline-secondary">
           Add
         </button>
       </React.Fragment>
     );
   }
+  /*
+  handleClick = () => {
+    console.log(this.state.text);
+
+    lookup(this.state.text).then(response => {
+      /**Enable Big-C extention 
+      console.log("sent");
+      console.log(response.currentPrice);
+    });
+  };
+  handleChange = e => {
+    let value = e.target.value;
+    this.setState({ text: value });
+  };
+  */
 }
 
 export default Searchbar;
