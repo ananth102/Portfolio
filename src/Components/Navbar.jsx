@@ -8,8 +8,12 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-light bg-light">
         <span className="navbar-brand mb-0">
-          My Portfolio ${this.props.meow}
+          My Portfolio ${this.props.value}
         </span>
+
+        <button onClick={this.props.onClick} className="btn btn-info">
+          Refresh
+        </button>
       </nav>
     );
   }

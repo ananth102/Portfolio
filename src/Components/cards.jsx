@@ -16,9 +16,20 @@ class cards extends Component {
   }
   setNumberCards() {
     let cardsN = [];
+    //console.log("stock len", this.props.stocks.length);
     for (let c = 0; c < this.props.stocks.length; c++) {
       cardsN.push(
-        <Card key={c} name={this.props.stocks[c].id} status={true} />
+        <Card
+          key={c}
+          id={c}
+          Card={Card}
+          onChange={this.props.onChange}
+          value={this.props.value}
+          name={this.props.stocks[c].name}
+          status={this.props.stocks[c].status}
+          delete={this.props.delete}
+          init={this.props.init}
+        />
       );
     }
     return cardsN;

@@ -4,12 +4,13 @@ import "../input.css";
 import Apple from "../Apple.jpg";
 class card extends Component {
   render() {
+    //console.log("called", this.props.status);
     return (
       <div class="card">
         <img class="card-img-top" src={Apple} alt="Card image cap" />
         <div class="card-body">
           <h5 class="card-title">{this.props.name}</h5>
-          <p class="card-text">Value: Growth 24 Hr Performance</p>
+          <p class="card-text">Enter Amount of shares owned</p>
           {this.cardTextBox()}
           {this.cardButton()}
         </div>
@@ -17,12 +18,23 @@ class card extends Component {
     );
   }
   cardTextBox() {
-    if (this.props.status) return <input type="text" class="form-control" />;
+    if (this.props.status)
+      return (
+        <input
+          type="text"
+          onChange={this.props.onChange}
+          class="form-control"
+        />
+      );
   }
   cardButton() {
     if (this.props.status) {
       return (
-        <button type="button" class="btn btn-primary" onClick={this.props.init}>
+        <button
+          type="button"
+          class="btn btn-primary"
+          onClick={() => this.props.init(this.props.id)}
+        >
           Initialize Stock
         </button>
       );
@@ -31,7 +43,7 @@ class card extends Component {
         <button
           type="button"
           class="btn btn-primary"
-          onClick={this.props.delete}
+          onClick={() => this.props.delete(this.props.id)}
         >
           Delete Stock
         </button>
