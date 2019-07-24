@@ -7,7 +7,6 @@ class cards extends Component {
     //array
   };
   render() {
-    this.getImage();
     return (
       <div class="container">
         <div class="row">{this.setNumberCards()}</div>
@@ -29,6 +28,7 @@ class cards extends Component {
           status={this.props.stocks[c].status}
           delete={this.props.delete}
           init={this.props.init}
+          url={this.props.stocks[c].url}
         />
       );
     }
