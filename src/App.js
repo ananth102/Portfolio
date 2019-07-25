@@ -19,7 +19,7 @@ Make an array based function
 
 CHANGE FIREBASE FUNCTION TO USER
 */
-
+let app;
 class App extends Component {
   state = {
     text: "",
@@ -37,8 +37,11 @@ class App extends Component {
     },
     userId: "",
     app: null,
-    sent: false
+    sent: false,
+    app: null
   };
+  app = firebase.initializeApp(this.state.firebasekey);
+
   handleChange = e => {
     //console.log("dd");
     let value = e.target.value;
@@ -62,6 +65,7 @@ class App extends Component {
     // database.ref("test/").set({
     //   stock: "woof"
     // });
+    //console.log(this.state.stocks.length);
     return (
       <div>
         <Navbar value={this.state.totalValue} onClick={this.navbarClick} />
@@ -121,6 +125,10 @@ class App extends Component {
     // console.log("done with map", stocks);
     this.setState({ totalValue });
     this.setState({ stocks });
+    let database = firebase.database();
+    database.ref("test/" + this.state.userId).update({
+      stock: this.state.stocks
+    });
     // console.log("after", this.state.stocks);
   };
 
@@ -143,10 +151,10 @@ class App extends Component {
 
     this.setState({ totalValue });
 
-    let app = firebase.initializeApp(this.state.firebasekey);
+    // let app = firebase.initializeApp(this.state.firebasekey);
     let database = firebase.database();
 
-    database.ref("test/").set({
+    database.ref("test/" + this.state.userId).update({
       stock: this.state.stocks
     });
 
@@ -189,19 +197,37 @@ class App extends Component {
   getInitialStocks = () => {
     console.log("id", this.state.userId);
     if (this.state.sent === false) {
-      let app = firebase.initializeApp(this.state.firebasekey);
+      //  let app = firebase.initializeApp(this.state.firebasekey);
       this.setState({ app });
     }
     let database = firebase.database();
-
+    let stocks;
+    //sleep(1000);
     database
       .ref("test/" + this.state.userId)
       .once("value")
-      .then(function(snapshot) {
-        console.log(snapshot.val());
+      .then(snapshot => {
+        if (snapshot.val() !== null) {
+          stocks = snapshot.val().stock;
+          console.log(stocks);
+
+          if (stocks !== null) {
+            console.log("updated");
+            this.setState({ stocks });
+            console.log(this.state.stocks.stock);
+          } else {
+            this.createNewId(database);
+          }
+        }
       });
     let sent = true;
     this.setState({ sent });
+  };
+
+  createNewId = database => {
+    database.ref("test/" + this.state.userId).set({
+      stocks: null
+    });
   };
 }
 
