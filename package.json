@@ -20,7 +20,7 @@
     "stocks": "^1.0.1",
     "yahoo": "0.0.2",
     "yahoo-stocks": "^2.0.4",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "start": "react-scripts start",
